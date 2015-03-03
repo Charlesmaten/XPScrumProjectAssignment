@@ -8,6 +8,7 @@
  * @author Bastian Buhrkall
  */
 
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
         
@@ -52,7 +53,7 @@ public class SoerenBastianBranchTests {
     
     @Before
     public  void beforeTest(){
-    ArrayList subject = new ArrayList;
+    ArrayList subjects = new ArrayList();
     Subject s1 = new Subject("Android", "Apps til mobiltelefoner", "Peter");
     }
     
@@ -62,7 +63,7 @@ public class SoerenBastianBranchTests {
     public void getAllSubjectsTest()
     {
         
-        asserEquals("Android",controller.getAllSubjects()[0].title);
+        asserEquals("Android", controller.getAllSubjects()[0].title);
     }
     
     @Test
