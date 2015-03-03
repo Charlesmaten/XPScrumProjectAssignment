@@ -11,18 +11,25 @@ import java.util.ArrayList;
  * @author Bastian Buhrkall
  */
 public class Controller {
-
-    //getAllSubjects()
-    //{
-    //  læser, putter i arrayList, returnerer arraylist af Subjects
-    // Subject har string title, String description, Teacher teacher
-    //}
     
-    public ArrayList getAllSubjects(){
+    ArrayList<Subject> markedSubjects = new ArrayList<Subject>();
     
-        
-        
+    public void deleteFromMarkedSubject(ArrayList markedSubjects, int index){
+    
     }
     
-
+    public void addSubjectsToSelectionRound(){
+    
+    }
+    
+    public void addToMarkedSubjects(Subject subject)
+    {
+    markedSubjects.add(subject);
+    }
+    
+    public ArrayList getAllSubjects(){
+        
+        ArrayList<Subject> results = new ArrayList<Subject>();
+        return results;
+    }
 }
