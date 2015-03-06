@@ -1,6 +1,7 @@
-package Model;
+package Controller;
 
 
+import Model.Subject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -69,14 +70,14 @@ public class FileHandler {
                         
                         for(Subject sub : Reader()){
                        
-                        toWrite += sub.title + "," + sub.description + "," + sub.teacher + System.lineSeparator();
+                        toWrite += sub.getTitle() + "," + sub.getDescription() + "," + sub.getTeacher() + System.lineSeparator();
 
                         }
                         
                         for(Subject s : subjects)
                         {
                         
-                        toWrite += s.title + "," + s.description + "," + s.teacher + System.lineSeparator();
+                        toWrite += s.getTitle() + "," + s.getDescription() + "," + s.getTeacher() + System.lineSeparator();
                         
                         }
                         

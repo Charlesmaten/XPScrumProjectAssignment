@@ -1,6 +1,7 @@
-package Model;
+package Controller;
 
 
+import Controller.FileHandler;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

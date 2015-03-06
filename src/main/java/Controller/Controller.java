@@ -1,6 +1,7 @@
-package Model;
+package Controller;
 
 
+import Model.Subject;
 import java.util.ArrayList;
 
 /*

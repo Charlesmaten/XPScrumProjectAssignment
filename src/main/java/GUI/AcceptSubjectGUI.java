@@ -6,7 +6,7 @@
 
 package GUI;
 
-import Model.FileHandler;
+import Controller.FileHandler;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -72,7 +72,7 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        Model.FileHandler fileHandler  = new FileHandler();
+        Controller.FileHandler fileHandler  = new FileHandler();
         populateList(fileHandler.Reader());
 
     }//GEN-LAST:event_jButton2ActionPerformed
