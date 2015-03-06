@@ -31,7 +31,7 @@ public class FileHandler {
  
 		try {
 			String sCurrentLine;
-			br = new BufferedReader(new FileReader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/testing"));
+			br = new BufferedReader(new FileReader("C:\\Users\\cda\\Desktop\\Testing.txt"));
  
 			while ((sCurrentLine = br.readLine()) != null) {
 				
@@ -82,7 +82,7 @@ public class FileHandler {
                         
 			
  
-			File file = new File("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/testing");
+			File file = new File("C:\\Users\\cda\\Desktop\\Testing.txt");
  
 			// if file doesnt exists, then create it
 			if (!file.exists()) {

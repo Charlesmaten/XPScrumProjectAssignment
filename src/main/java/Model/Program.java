@@ -27,18 +27,23 @@ public class Program {
    
         FileHandler fileHandler  = new FileHandler();
 //        fileHandler.Reader();
+//        
+//        Subject s1 = new Subject("Test", "Test","Test");
+//        Subject s2 = new Subject("Test2", "Test2","Test2");
+//        Subject s3 = new Subject("Test3", "Test3","Test3");
+//        
+//        ArrayList<Subject> arr = new ArrayList();
+//        
+//        arr.add(s1);
+//        arr.add(s2);
+//        arr.add(s3);
         
-        Subject s1 = new Subject("Test", "Test","Test");
-        Subject s2 = new Subject("Test2", "Test2","Test2");
-        Subject s3 = new Subject("Test3", "Test3","Test3");
+        //fileHandler.Writer(arr);
         
-        ArrayList<Subject> arr = new ArrayList();
+        GUI.AcceptSubjectGUI gui = new GUI.AcceptSubjectGUI();
+        gui.setVisible(true);
         
-        arr.add(s1);
-        arr.add(s2);
-        arr.add(s3);
         
-        fileHandler.Writer(arr);
 
     }
 }
