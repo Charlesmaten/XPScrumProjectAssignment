@@ -8,6 +8,8 @@
  * @author Bastian Buhrkall
  */
 
+import Model.Subject;
+import Model.Controller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
