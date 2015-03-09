@@ -7,9 +7,11 @@
 package GUI;
 
 import Controller.FileHandler;
-import java.lang.reflect.Array;
+import Model.Subject;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  *
@@ -23,6 +25,11 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
     public AcceptSubjectGUI() {
         initComponents();
         subjectGuiList.setModel(listModel);
+        Controller.FileHandler fileHandler  = new FileHandler();
+        populateList(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects"));
+         descriptionTextArea.setWrapStyleWord(true);
+         descriptionTextArea.setLineWrap(true);
+                 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,45 +42,67 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         subjectGuiList = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        addAllButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        descriptionTextArea = new javax.swing.JTextArea();
+        descriptionLabel = new javax.swing.JLabel();
+        teacherLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(null);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        subjectGuiList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subjectGuiListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(subjectGuiList);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 200, 300));
 
-        jButton1.setText("Tilføj valgte");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, 100, -1));
-
-        jButton2.setText("Tilføj alle");
+        jButton2.setText("Tilføj valgte");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 460, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, 100, -1));
+
+        addAllButton.setText("Tilføj alle");
+        addAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAllButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addAllButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 460, -1, -1));
 
         jLabel1.setText("Marker de ønskede");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 90, 130, -1));
+
+        titleLabel.setText("Overskrift");
+        getContentPane().add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+
+        descriptionTextArea.setColumns(1);
+        descriptionTextArea.setRows(1);
+        jScrollPane2.setViewportView(descriptionTextArea);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 190, 280, 120));
+
+        descriptionLabel.setText("Description");
+        getContentPane().add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+
+        teacherLabel.setText("Lærer");
+        getContentPane().add(teacherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        Controller.FileHandler fileHandler  = new FileHandler();
-        populateList(fileHandler.Reader());
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -82,9 +111,8 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
         
         for(int i =0; i<array.size(); i++)
         {
-                Model.Subject s1 = (Model.Subject) array.get(i);
-//             javax.swing.JCheckBox newCheckBox = new javax.swing.JCheckBox();
-//             newCheckBox.setText(s1.getTitle());
+             Model.Subject s1 = (Model.Subject) array.get(i);
+             
              listModel.addElement(s1.getTitle());
         }        
     }
@@ -92,9 +120,44 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
 
 DefaultListModel listModel = new DefaultListModel();
            
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void addAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAllButtonActionPerformed
+
+        FileHandler fileHandler = new FileHandler();
+        
+        ArrayList <Subject> allAddArray = fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects");
+        
+        int result = JOptionPane.showConfirmDialog(null, 
+        "Vil du tilføje alle valgfag?",null, JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION) {
+
+            
+        fileHandler.Writer(allAddArray, "/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects" );  
+        } 
+    }//GEN-LAST:event_addAllButtonActionPerformed
+
+    
+    ArrayList<Subject> acceptedSubjects = new ArrayList();
+    
+    
+    private void subjectGuiListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectGuiListMouseClicked
+
+        Controller.FileHandler fileHandler  = new FileHandler();
+        int index = subjectGuiList.locationToIndex(evt.getPoint());
+        titleLabel.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getTitle());
+        descriptionTextArea.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getDescription());
+        teacherLabel.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getTeacher());    
+        
+        //acceptedSubjects.add(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index));
+        //fileHandler.Writer(acceptedSubjects,"/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects",
+        //        "/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects");
+        
+        if (evt.getClickCount() == 2) {
+           
+              acceptedSubjects.add(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index));
+              fileHandler.Writer(acceptedSubjects,"/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects");
+              
+        }
+    }//GEN-LAST:event_subjectGuiListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,10 +195,15 @@ DefaultListModel listModel = new DefaultListModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addAllButton;
+    private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JTextArea descriptionTextArea;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList subjectGuiList;
+    private javax.swing.JLabel teacherLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
