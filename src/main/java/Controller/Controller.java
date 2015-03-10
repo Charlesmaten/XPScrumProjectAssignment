@@ -1,6 +1,7 @@
 package Controller;
 
 
+import GUI.AcceptSubjectGUI;
 import Model.Subject;
 import java.util.ArrayList;
 
@@ -16,20 +17,10 @@ import java.util.ArrayList;
 public class Controller {
     
     ArrayList<Subject> markedSubjects = new ArrayList<Subject>();
+
+ 
     
-    public void deleteFromMarkedSubject(ArrayList markedSubjects, int index){
-    
-    }
-    
-    public void addSubjectsToSelectionRound(){
-    
-    }
-    
-    public void addToMarkedSubjects(Subject subject)
-    {
-    markedSubjects.add(subject);
-    }
-    
+   
     public ArrayList getAllSubjects(){
         
         ArrayList<Subject> results = new ArrayList<Subject>();

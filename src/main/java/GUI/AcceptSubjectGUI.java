@@ -11,7 +11,6 @@ import Model.Subject;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 
 /**
  *
@@ -118,7 +117,7 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
     }
         
 
-DefaultListModel listModel = new DefaultListModel();
+    public DefaultListModel listModel = new DefaultListModel();
            
     private void addAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAllButtonActionPerformed
 
@@ -162,6 +161,7 @@ DefaultListModel listModel = new DefaultListModel();
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -185,7 +185,7 @@ DefaultListModel listModel = new DefaultListModel();
             java.util.logging.Logger.getLogger(AcceptSubjectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -193,7 +193,7 @@ DefaultListModel listModel = new DefaultListModel();
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAllButton;
     private javax.swing.JLabel descriptionLabel;

@@ -25,14 +25,14 @@ import java.util.Scanner;
 public class FileHandler {
     
     
-    public ArrayList<Subject> Reader(){
+    public ArrayList<Subject> Reader(String fileName){
       
         ArrayList<Subject> readerResult = new ArrayList();
         BufferedReader br = null;
  
 		try {
 			String sCurrentLine;
-			br = new BufferedReader(new FileReader("C:\\Users\\cda\\Desktop\\Testing.txt"));
+			br = new BufferedReader(new FileReader(fileName));
  
 			while ((sCurrentLine = br.readLine()) != null) {
 				
@@ -62,17 +62,21 @@ public class FileHandler {
       }
     
     
-    public void Writer(ArrayList<Subject> subjects){
+    public void Writer(ArrayList<Subject> subjects, String fileName){
     
         try {
 
                         String toWrite = "";
                         
-                        for(Subject sub : Reader()){
-                       
-                        toWrite += sub.getTitle() + "," + sub.getDescription() + "," + sub.getTeacher() + System.lineSeparator();
-
-                        }
+                        //If you want to add single items to the existing list, outcomment/use this part
+//                        
+//                        for(Subject sub : Reader(loadData)){
+//                       
+//                        toWrite += sub.getTitle() + "," + sub.getDescription() + "," + sub.getTeacher() + System.lineSeparator();
+//
+//                        }
+                        
+                        //Else use this part to add one element
                         
                         for(Subject s : subjects)
                         {
@@ -81,9 +85,9 @@ public class FileHandler {
                         
                         }
                         
-			
+
  
-			File file = new File("C:\\Users\\cda\\Desktop\\Testing.txt");
+			File file = new File(fileName);
  
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
@@ -95,7 +99,7 @@ public class FileHandler {
 			bw.write(toWrite);
 			bw.close();
  
-			System.out.println("Done");
+			System.out.println("Added subject/ subjects");
  
 		} catch (IOException e) {
 			e.printStackTrace();
