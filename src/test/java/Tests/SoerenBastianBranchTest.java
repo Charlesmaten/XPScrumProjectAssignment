@@ -10,6 +10,7 @@
 
 import Model.Subject;
 import Controller.Controller;
+import Controller.FileHandler;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -22,87 +23,61 @@ import org.junit.Before;
    
 public class SoerenBastianBranchTest {
     
+    // TODO!!!
+//    
+//    --FileHandler--
+//    Reader()
+//    Writer()
+//    
+//    --Controller--
+//    populateList()
+//    addAllSubjects()
  
-//reader
-//writer
-
-    
-    // class FileWriter()
-    //{
-    // IO writer
-    //}
-    
-    //ArrayList markedSubjects;
-    
-    //getAllSubjects()
-    //{
-    //  læser, putter i arrayList, returnerer arraylist af Subjects
-    // Subject har string title, String description, Teacher teacher
-    //}
-    
-    //void addToMarkedSubjects(Subject subject)
-    //{
-    //markedSubjects.add(subject)
-    //}
-    
-    // void deleteFromMarkedSubject(ArrayList markedSubjects, int index)
-    //{
-    //for loop der slettter index....
-    //}
-    
-    //addSubjectsToSelctionRound(ArrayList markedSubjects)
-    //{
-    //   skriver subject til textfil med IO.
-    //}
  
     
     private Controller controller = new Controller();
+    private FileHandler fileHandler = new FileHandler();
     ArrayList<Subject> subjects = new ArrayList<Subject>();
-    ArrayList<Subject> markedSubjects = new ArrayList<Subject>();
+    ArrayList<Subject> acceptedSubjectsSubjects = new ArrayList<Subject>();
+    String proposedTestSubjects ="C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\test\\java\\Tests\\ProposedTestSubjectsTestFile";
+    String AcceptedTestSubjects ="C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\test\\java\\Tests\\AcceptedTestSubjectsTestFile";
+
     
     @Before
     public  void beforeTest(){
-    
-    Subject s1 = new Subject("Android", "Apps til mobiltelefoner", "Peter");
-    Subject s2 = new Subject("C#", "c#", "Torben");
-    Subject s3 = new Subject("Arduino", "dimser", "Tobias");
-    Subject s4 = new Subject("AI", "kunstig intellegens", "Torben");
 
-    subjects.add(s1);
-    subjects.add(s2);
-    subjects.add(s3);
-    subjects.add(s4);
-    
-    markedSubjects.add(s1);
-    markedSubjects.add(s2);
-    markedSubjects.add(s3);
-    markedSubjects.add(s4);
-    
-    
-    
-    
-    
-    
-    
-
-
-    }
-
-    @Test
-    public void getAllSubjectsTest()
-    {
         
-        assertEquals(4, controller.getAllSubjects().size());
-    }
-    
-    @Test
-    public void addToMarkedSubjectsTest(){
-        Subject testSubject = new Subject("","","");
-        controller.addToMarkedSubjects(testSubject);
-        assertEquals(5, markedSubjects.size()); 
+        ArrayList <Subject> dummyData = new ArrayList();
+        Subject s1 = new Subject("Hans", "Java", "Sjovt","O'riley");
+        dummyData.add(s1);
+        
+        
+        //Vi har lavet en fil som ser sådan her ud :
+        
+//        Bastian,Android,Apps til mobiltelefoner,Peter
+//        Søren,C#,C#,Torben
+//        Charles,Arduino,dimser,Tobias
+//        Ruben,AI,kunstig intellegens,Torben
+      
     }
 
+    @Test
+    public void ReaderTest()
+    {
+        subjects = fileHandler.Reader(proposedTestSubjects);
+        assertEquals(4, subjects.size());
+        assertEquals("Bastian", subjects.get(0).getProposer());
+        assertEquals("Android", subjects.get(0).getTitle());
+    }
+   
+    @Test
+    public void WriterTest()
+    {
     
+        fileHandler.Writer(subjects, AcceptedTestSubjects);
+        assertEquals(1, fileHandler.Reader(AcceptedTestSubjects).size());
+        assertEquals("Hans", fileHandler.Reader(AcceptedTestSubjects).get(0).getProposer());
+    }
   }
 
 //package Translation;
@@ -141,8 +116,6 @@ public class SoerenBastianBranchTest {
 //    
 //}
     
-    
 
-    
-    
+
 

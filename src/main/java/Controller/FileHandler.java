@@ -69,25 +69,13 @@ public class FileHandler {
 
                         String toWrite = "";
                         
-                        //If you want to add single items to the existing list, outcomment/use this part
-//                        
-//                        for(Subject sub : Reader(loadData)){
-//                       
-//                        toWrite += sub.getTitle() + "," + sub.getDescription() + "," + sub.getTeacher() + System.lineSeparator();
-//
-//                        }
-                        
-                        //Else use this part to add one element
-                        
                         for(Subject s : subjects)
                         {
                         
                         toWrite += s.getProposer() + "," + s.getTitle() + "," + s.getDescription() + "," + s.getTeacher() + System.lineSeparator();
                         // Refactoring adder proposer RJ tirs 10-03
                         }
-                        
-
- 
+         
 			File file = new File(fileName);
  
 			// if file doesnt exists, then create it

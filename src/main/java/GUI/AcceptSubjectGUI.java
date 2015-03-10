@@ -6,6 +6,7 @@
 
 package GUI;
 
+import Controller.Controller;
 import Controller.FileHandler;
 import Model.Subject;
 import java.util.ArrayList;
@@ -21,11 +22,20 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
     /**
      * Creates new form AcceptSubjectGUI
      */
+    
+
+    ArrayList<Subject> acceptedSubjects = new ArrayList();
+    DefaultListModel listModel = new DefaultListModel();
+    
+    Controller con;
+    FileHandler fileHandler;
+    
     public AcceptSubjectGUI() {
-        initComponents();
-        subjectGuiList.setModel(listModel);
-        Controller.FileHandler fileHandler  = new FileHandler();
-        populateList(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects"));
+         con = new Controller();
+         fileHandler = new FileHandler();
+         initComponents();
+         subjectGuiList.setModel(listModel);         
+         con.populateList(fileHandler.Reader(con.bastianSørenProposedFile), listModel);
          descriptionTextArea.setWrapStyleWord(true);
          descriptionTextArea.setLineWrap(true);
                  
@@ -108,59 +118,36 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
-        public void populateList(ArrayList array)
-    {
-        
-        for(int i =0; i<array.size(); i++)
-        {
-             Model.Subject s1 = (Model.Subject) array.get(i);
-             
-             listModel.addElement(s1.getTitle());
-        }        
-    }
-        
-
-    public DefaultListModel listModel = new DefaultListModel();
-           
+       
     private void addAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAllButtonActionPerformed
 
-        FileHandler fileHandler = new FileHandler();
         
-        ArrayList <Subject> allAddArray = fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects");
+        ArrayList <Subject> allAddArray = fileHandler.Reader(con.bastianSørenProposedFile);
         
         int result = JOptionPane.showConfirmDialog(null, 
         "Vil du tilføje alle valgfag?",null, JOptionPane.YES_NO_OPTION);
         if(result == JOptionPane.YES_OPTION) {
-
-            
-        fileHandler.Writer(allAddArray, "C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\AcceptedSubjects" );  
+ 
+            con.addAllSubjects();
+          
         } 
     }//GEN-LAST:event_addAllButtonActionPerformed
 
-    
-    ArrayList<Subject> acceptedSubjects = new ArrayList();
-    
-    
     private void subjectGuiListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectGuiListMouseClicked
 
-        Controller.FileHandler fileHandler  = new FileHandler();
+        
         int index = subjectGuiList.locationToIndex(evt.getPoint());
         // Refactoring adder proposer RJ tirs 10-03
-        proposerjLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getProposer());
-        titleLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getTitle());
-        descriptionTextArea.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getDescription());
-        teacherLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getTeacher());    
+        proposerjLabel.setText(fileHandler.Reader(con.bastianSørenProposedFile).get(index).getProposer());
+        titleLabel.setText(fileHandler.Reader(con.bastianSørenProposedFile).get(index).getTitle());
+        descriptionTextArea.setText(fileHandler.Reader(con.bastianSørenProposedFile).get(index).getDescription());
+        teacherLabel.setText(fileHandler.Reader(con.bastianSørenProposedFile).get(index).getTeacher());    
         
-        //acceptedSubjects.add(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index));
-        //fileHandler.Writer(acceptedSubjects,"/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects",
-        //        "/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects");
         
         if (evt.getClickCount() == 2) {
            
-              acceptedSubjects.add(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index));
-              fileHandler.Writer(acceptedSubjects,"C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\AcceptedSubjects");
-              
+              acceptedSubjects.add(fileHandler.Reader(con.bastianSørenProposedFile).get(index));
+              fileHandler.Writer(acceptedSubjects,con.bastianSørenAcceptedFile);         
         }
     }//GEN-LAST:event_subjectGuiListMouseClicked
 
