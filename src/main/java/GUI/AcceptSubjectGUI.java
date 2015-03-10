@@ -25,7 +25,7 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
         initComponents();
         subjectGuiList.setModel(listModel);
         Controller.FileHandler fileHandler  = new FileHandler();
-        populateList(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects"));
+        populateList(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects"));
          descriptionTextArea.setWrapStyleWord(true);
          descriptionTextArea.setLineWrap(true);
                  
@@ -49,6 +49,7 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
         descriptionTextArea = new javax.swing.JTextArea();
         descriptionLabel = new javax.swing.JLabel();
         teacherLabel = new javax.swing.JLabel();
+        proposerjLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(null);
@@ -98,6 +99,9 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
         teacherLabel.setText("Lærer");
         getContentPane().add(teacherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
+        proposerjLabel.setText("Proposer");
+        getContentPane().add(proposerjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 50, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,14 +127,14 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
 
         FileHandler fileHandler = new FileHandler();
         
-        ArrayList <Subject> allAddArray = fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects");
+        ArrayList <Subject> allAddArray = fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects");
         
         int result = JOptionPane.showConfirmDialog(null, 
         "Vil du tilføje alle valgfag?",null, JOptionPane.YES_NO_OPTION);
         if(result == JOptionPane.YES_OPTION) {
 
             
-        fileHandler.Writer(allAddArray, "/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects" );  
+        fileHandler.Writer(allAddArray, "C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\AcceptedSubjects" );  
         } 
     }//GEN-LAST:event_addAllButtonActionPerformed
 
@@ -142,9 +146,11 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
 
         Controller.FileHandler fileHandler  = new FileHandler();
         int index = subjectGuiList.locationToIndex(evt.getPoint());
-        titleLabel.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getTitle());
-        descriptionTextArea.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getDescription());
-        teacherLabel.setText(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index).getTeacher());    
+        // Refactoring adder proposer RJ tirs 10-03
+        proposerjLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getProposer());
+        titleLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getTitle());
+        descriptionTextArea.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getDescription());
+        teacherLabel.setText(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index).getTeacher());    
         
         //acceptedSubjects.add(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index));
         //fileHandler.Writer(acceptedSubjects,"/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects",
@@ -152,8 +158,8 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
         
         if (evt.getClickCount() == 2) {
            
-              acceptedSubjects.add(fileHandler.Reader("/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/ProposedSubjects").get(index));
-              fileHandler.Writer(acceptedSubjects,"/Users/Buhrkall/NetbeansProjects/XPScrumProjectAssignment1/src/main/java/Model/AcceptedSubjects");
+              acceptedSubjects.add(fileHandler.Reader("C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\ProposedSubjects").get(index));
+              fileHandler.Writer(acceptedSubjects,"C:\\Users\\Ejer\\Documents\\NetBeansProjects\\0_4Sem\\SIP1\\XPScrumProjectAssignment\\src\\main\\java\\Model\\AcceptedSubjects");
               
         }
     }//GEN-LAST:event_subjectGuiListMouseClicked
@@ -202,6 +208,7 @@ public class AcceptSubjectGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel proposerjLabel;
     private javax.swing.JList subjectGuiList;
     private javax.swing.JLabel teacherLabel;
     private javax.swing.JLabel titleLabel;

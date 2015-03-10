@@ -38,12 +38,13 @@ public class FileHandler {
 				
                             
                             String[] params = sCurrentLine.split(",");
-
-                            String title = params[0];
-                            String description = params[1];
-                            String teacher = params[2];
                             
-                            Subject s = new Subject(title,description,teacher);
+                            String proposer = params[0];// Refactoring adder proposer RJ tirs 10-03
+                            String title = params[1]; //før 0
+                            String description = params[2]; //før 1
+                            String teacher = params[3]; //før 2
+                            
+                            Subject s = new Subject(proposer,title,description,teacher); // Refactoring adder proposer RJ tirs 10-03
                             readerResult.add(s);
                             
 			}
@@ -81,8 +82,8 @@ public class FileHandler {
                         for(Subject s : subjects)
                         {
                         
-                        toWrite += s.getTitle() + "," + s.getDescription() + "," + s.getTeacher() + System.lineSeparator();
-                        
+                        toWrite += s.getProposer() + "," + s.getTitle() + "," + s.getDescription() + "," + s.getTeacher() + System.lineSeparator();
+                        // Refactoring adder proposer RJ tirs 10-03
                         }
                         
 

@@ -10,20 +10,28 @@ package Model;
  * @author Bastian Buhrkall
  */
 public class Subject {
-    
+    String proposer; 
     String title;
     String description;
     //Teacher teacher;
     String teacher;
     
 
-    public Subject(String title, String description, String teacher) {
+    public Subject(String proposer, String title, String description, String teacher) {  // Refactoring adder proposer RJ tirs 10-03
+        this.proposer = proposer;
         this.title = title;
         this.description = description;
         this.teacher = teacher;
     }
-    
-    
+
+    public String getProposer() {
+        return proposer; 
+    }
+
+    public void setProposer(String proposer) {
+        this.proposer = proposer; 
+    }
+
 
     public String getTitle() {
         return title;
