@@ -96,5 +96,25 @@ public class FileHandler {
         
     }
     
+    public void writePrioChoices(String name, List<Object> firstPrios, List<Object> secondPrios)
+    {
+        File file = new File("PriorityChoices.csv");
+        
+        FileWriter writer = null;
+        try{
+            writer = new FileWriter(file, true);
+            writer.append("\n"+name + ",");
+            String firstPrioString = firstPrios.get(0)+";"+firstPrios.get(1);
+            String secondPrioString = secondPrios.get(0)+";"+secondPrios.get(1);
+            writer.append(firstPrioString +"," +secondPrioString);
+            
+            writer.close();
+            System.out.println("Done writing choices");
+        }
+        catch(Exception E){
+            
+        }
+    }
+    
     
 }

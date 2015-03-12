@@ -4,7 +4,9 @@ package Controller;
 import GUI.AcceptSubjectGUI;
 import Model.Subject;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
+import sun.security.util.Resources;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
