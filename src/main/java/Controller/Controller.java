@@ -55,9 +55,9 @@ public class Controller {
         Student y = new Student("Phill");
         Student z = new Student("Bastian");
         
-        retlist.add(new UserSatisfaction(x, true, false));
-        retlist.add(new UserSatisfaction(y, true, true));
-        retlist.add(new UserSatisfaction(z, false, false));
+        retlist.add(new UserSatisfaction(x, 0, 1));
+        retlist.add(new UserSatisfaction(y, 0, 0));
+        retlist.add(new UserSatisfaction(z, 2, 0));
         
         return retlist;
     }

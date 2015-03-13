@@ -11,34 +11,34 @@ package Model;
  */
 public class UserSatisfaction {
     public final Student student;
-    private Boolean hasFirstPrio,hasSecondPrio;
+    private int firstPrios, secondPrios;
 
     public UserSatisfaction(Student student) {
         this.student = student;
     }
 
-    public UserSatisfaction(Student student, Boolean hasFirstPrio, Boolean hasSecondPrio) {
+    public UserSatisfaction(Student student, int firstPrios, int secondPrios) {
         this.student = student;
-        this.hasFirstPrio = hasFirstPrio;
-        this.hasSecondPrio = hasSecondPrio;
-    }
-
-    public Boolean getHasFirstPrio() {
-        return hasFirstPrio;
-    }
-
-    public void setHasFirstPrio(Boolean hasFirstPrio) {
-        this.hasFirstPrio = hasFirstPrio;
-    }
-
-    public Boolean getHasSecondPrio() {
-        return hasSecondPrio;
-    }
-
-    public void setHasSecondPrio(Boolean hasSecondPrio) {
-        this.hasSecondPrio = hasSecondPrio;
+        this.firstPrios = firstPrios;
+        this.secondPrios = secondPrios;
     }
     
+
+    public int getFirstPrios() {
+        return firstPrios;
+    }
+
+    public void setFirstPrios(int firstPrios) {
+        this.firstPrios = firstPrios;
+    }
+
+    public int getSecondPrios() {
+        return secondPrios;
+    }
+
+    public void setSecondPrios(int secondPrios) {
+        this.secondPrios = secondPrios;
+    }
     
     
 }

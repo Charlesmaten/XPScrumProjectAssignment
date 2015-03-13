@@ -11,17 +11,22 @@ package Model;
  */
 public class Student {
     public String name;
-    public Subject firstprio,secondprio;
+    public Subject firstprio1,firstprio2,secondprio1,secondprio2;
 
+      
     public Student(String name) {
         this.name = name;
     }
 
-    public Student(String name, Subject firstprio, Subject secondprio) {
+    public Student(String name, Subject firstprio1, Subject firstprio2, Subject secondprio1, Subject secondprio2) {
         this.name = name;
-        this.firstprio = firstprio;
-        this.secondprio = secondprio;
+        this.firstprio1 = firstprio1;
+        this.firstprio2 = firstprio2;
+        this.secondprio1 = secondprio1;
+        this.secondprio2 = secondprio2;
     }
+
+    
 
     public String getName() {
         return name;
@@ -31,21 +36,38 @@ public class Student {
         this.name = name;
     }
 
-    public Subject getFirstprio() {
-        return firstprio;
+    public Subject getFirstprio1() {
+        return firstprio1;
     }
 
-    public void setFirstprio(Subject firstprio) {
-        this.firstprio = firstprio;
+    public void setFirstprio1(Subject firstprio1) {
+        this.firstprio1 = firstprio1;
     }
 
-    public Subject getSecondprio() {
-        return secondprio;
+    public Subject getFirstprio2() {
+        return firstprio2;
     }
 
-    public void setSecondprio(Subject secondprio) {
-        this.secondprio = secondprio;
+    public void setFirstprio2(Subject firstprio2) {
+        this.firstprio2 = firstprio2;
     }
-    
+
+    public Subject getSecondprio1() {
+        return secondprio1;
+    }
+
+    public void setSecondprio1(Subject secondprio1) {
+        this.secondprio1 = secondprio1;
+    }
+
+    public Subject getSecondprio2() {
+        return secondprio2;
+    }
+
+    public void setSecondprio2(Subject secondprio2) {
+        this.secondprio2 = secondprio2;
+    }
+
+ 
     
 }
