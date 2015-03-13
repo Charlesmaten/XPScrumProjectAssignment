@@ -2,7 +2,9 @@ package Controller;
 
 
 import GUI.AcceptSubjectGUI;
+import Model.Student;
 import Model.Subject;
+import Model.UserSatisfaction;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -42,5 +44,21 @@ public class Controller {
     public void addAllSubjects(){
         ArrayList <Subject> allAddArray = fileHandler.Reader(bastianSørenProposedFile);
         fileHandler.Writer(allAddArray, bastianSørenAcceptedFile);
+    }
+    
+    public List<UserSatisfaction> getUserSatisfaction(List<Subject> poolA, List<Subject> poolB)
+    {
+        List<UserSatisfaction> retlist = new ArrayList<>();
+        
+        //dummy data
+        Student x = new Student("Charles");
+        Student y = new Student("Phill");
+        Student z = new Student("Bastian");
+        
+        retlist.add(new UserSatisfaction(x, true, false));
+        retlist.add(new UserSatisfaction(y, true, true));
+        retlist.add(new UserSatisfaction(z, false, false));
+        
+        return retlist;
     }
 }
