@@ -23,35 +23,21 @@ import org.junit.Before;
    
 public class SoerenBastianBranchTest {
     
-    // TODO!!!
-//    
-//    --FileHandler--
-//    Reader()
-//    Writer()
-//    
-//    --Controller--
-//    populateList()
-//    addAllSubjects()
- 
- 
     
     private Controller controller = new Controller();
     private FileHandler fileHandler = new FileHandler();
     ArrayList<Subject> subjects = new ArrayList<Subject>();
     ArrayList<Subject> acceptedSubjectsSubjects = new ArrayList<Subject>();
-    String proposedTestSubjects ="C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\test\\java\\Tests\\ProposedTestSubjectsTestFile";
-    String AcceptedTestSubjects ="C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\test\\java\\Tests\\AcceptedTestSubjectsTestFile";
+    ArrayList <Subject> dummyData = new ArrayList();
+    String proposedTestSubjects ="ProposedSubjectsTestFile";
+    String AcceptedTestSubjects ="AcceptedSubjectsTestFile";
 
-    
     @Before
     public  void beforeTest(){
-
         
-        ArrayList <Subject> dummyData = new ArrayList();
         Subject s1 = new Subject("Hans", "Java", "Sjovt","O'riley");
         dummyData.add(s1);
-        
-        
+
         //Vi har lavet en fil som ser sådan her ud :
         
 //        Bastian,Android,Apps til mobiltelefoner,Peter
@@ -73,11 +59,14 @@ public class SoerenBastianBranchTest {
     @Test
     public void WriterTest()
     {
-    
-        fileHandler.Writer(subjects, AcceptedTestSubjects);
+        
+        fileHandler.Writer(dummyData, AcceptedTestSubjects);
         assertEquals(1, fileHandler.Reader(AcceptedTestSubjects).size());
         assertEquals("Hans", fileHandler.Reader(AcceptedTestSubjects).get(0).getProposer());
     }
+    
+    
+    
   }
 
 //package Translation;
