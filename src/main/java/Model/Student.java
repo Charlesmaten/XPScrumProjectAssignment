@@ -13,6 +13,16 @@ public class Student {
     public String name;
     public Subject firstprio,secondprio;
 
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public Student(String name, Subject firstprio, Subject secondprio) {
+        this.name = name;
+        this.firstprio = firstprio;
+        this.secondprio = secondprio;
+    }
+
     public String getName() {
         return name;
     }
