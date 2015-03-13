@@ -23,9 +23,8 @@ public class Controller {
     
     ArrayList<Subject> markedSubjects = new ArrayList<Subject>();
     
-     public String bastianSørenProposedFile = "C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\main\\java\\Model\\ProposedSubjects";
-     public String bastianSørenAcceptedFile = "C:\\Users\\Bastian Buhrkall\\Documents\\NetBeansProjects\\XPScrumProjectAssignment3\\src\\main\\java\\Model\\AcceptedSubjects";
-     public String rubenCharlesProposedFile = ""; //INDSÆT JERES FILSTI HER!
+     public String bastianSørenProposedFile = "ProposedSubjects";
+     public String bastianSørenAcceptedFile = "AcceptedSubjects";
      
    FileHandler fileHandler = new FileHandler();
 
