@@ -83,7 +83,11 @@ public class FileHandler {
 				file.createNewFile();
 			}
 
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        //Charles
+                        //Tilføjet true som parameter sådan så vi skriver til samme fil og ikke overskriver den hvergang programmet kører
+			FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);  
+                        //Tilføjet lineSeaprator så vi får en ny linje i filen
+                        System.lineSeparator();
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(toWrite);
 			bw.close();
