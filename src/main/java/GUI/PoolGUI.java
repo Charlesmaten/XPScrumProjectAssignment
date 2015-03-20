@@ -8,7 +8,9 @@ package GUI;
 import Controller.Controller;
 import Controller.FileHandler;
 import Model.Subject;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +37,31 @@ public class PoolGUI extends javax.swing.JFrame {
         
         con.populateList(handle.Reader(con.bastianSørenAcceptedFile), listModelValgFag);
     }
+    
+    private void valgfagListMouseClicked(java.awt.event.MouseEvent evt) {                                            
+
+        
+        int index = jListValgfag.locationToIndex(evt.getPoint());
+        // Refactoring adder proposer RJ tirs 10-03
+        
+        
+        
+        if (evt.getClickCount() == 2) {
+           
+            int result = JOptionPane.showConfirmDialog(null, 
+        "Tryk ja for 1, nej for 2?",null, JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION) {
+ 
+//           ArrayList <Subject> pool1Array = new ArrayList();
+//           ArrayList <Subject> pool2Array = new ArrayList();
+           jListPool1.add(jListValgfag.getComponent(index));
+
+        } 
+        
+        
+                      
+        }
+    }                     
 
    
     /**
@@ -87,6 +114,11 @@ public class PoolGUI extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jListValgfag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListValgfagMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jListValgfag);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 120, -1));
@@ -131,6 +163,11 @@ public class PoolGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jListValgfagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListValgfagMouseClicked
+        // TODO add your handling code here:
+        valgfagListMouseClicked(evt);
+    }//GEN-LAST:event_jListValgfagMouseClicked
 
     /**
      * @param args the command line arguments
